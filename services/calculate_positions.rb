@@ -1,23 +1,23 @@
 class CalculatePositions
-  def self.call(user, position)
-    @user = user
-    @position = position
-    @full_discount = full_discount
-
-    {
-      discount_type: discount_type,
-      total_sum: total_sum,
-      name: position&.dig(:name),
-      total_discount_percent: total_discount_percent,
-      total_discount: total_discount,
-      total_cashback: total_cashback,
-      total_cashback_percent: total_cashback_percent
-    }
-  end
-
   class << self
+    def call(user, position)
+      @user = user
+      @position = position
+      @full_discount = full_discount
+
+      {
+        discount_type: discount_type,
+        total_sum: total_sum,
+        name: position&.dig(:name),
+        total_discount_percent: total_discount_percent,
+        total_discount: total_discount,
+        total_cashback: total_cashback,
+        total_cashback_percent: total_cashback_percent
+      }
+    end
+
     def full_discount
-      @position.dig(:base_sum) * (@position.dig(:discount_percent) + @user.dig(:discount).to_f)/100
+      @position.dig(:base_sum) * (@position.dig(:discount_percent) + @user.dig(:discount).to_f) / 100
     end
 
     def total_sum
@@ -31,12 +31,12 @@ class CalculatePositions
     end
 
     def total_discount_percent
-      ((total_discount/@position.dig(:base_sum)) * 100).round(1)
+      ((total_discount / @position.dig(:base_sum)) * 100).round(1)
     end
 
     def discount_type
       product_discount = @position.dig(:discount_percent)
-      template_discount =  @user.dig(:discount)
+      template_discount = @user.dig(:discount)
 
       if product_discount > 0 && template_discount > 0
         "by_product/by_template"
@@ -58,7 +58,7 @@ class CalculatePositions
     end
 
     def total_cashback
-      total_sum * (total_cashback_percent/100)
+      total_sum * (total_cashback_percent / 100)
     end
   end
 end
