@@ -19,7 +19,7 @@ post '/submit' do
   req = request.body.read
   data = JSON.parse(req)
 
-  result = SubmitRequest.call(data)
+  result = ConfirmOperation.call(data)
 
   json(status: "ok", data: result)
 end
