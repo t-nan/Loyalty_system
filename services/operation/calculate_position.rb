@@ -1,4 +1,4 @@
-class CalculatePositions
+class CalculatePosition
   class << self
     def call(user, position)
       @user = user
@@ -15,6 +15,8 @@ class CalculatePositions
         total_cashback: total_cashback
       }
     end
+
+    private
 
     def full_discount
       @position.dig(:base_sum) * (@position.dig(:discount_percent) + @user.dig(:discount).to_f) / 100

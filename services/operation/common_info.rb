@@ -1,7 +1,6 @@
 class CommonInfo
   class << self
     def call(user, positions)
-
       discount = 0.0
       cashback = 0.0
       base_sum = 0.0
