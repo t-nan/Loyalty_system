@@ -4,7 +4,7 @@ require "sinatra/json"
 require 'pry'
 require './db_init.rb'
 require './services/operation/operation_request.rb'
-require './services/submit/submit_request.rb'
+require './services/submit/confirm_operation.rb'
 
 post '/operation' do
   req = request.body.read
@@ -12,7 +12,7 @@ post '/operation' do
 
   result = OperationRequest.call(data)
 
-  json(status: "success", data: result)
+  json(status: "ok", data: result)
 end
 
 post '/submit' do
@@ -21,7 +21,7 @@ post '/submit' do
 
   result = SubmitRequest.call(data)
 
-  json(status: "success", data: result)
+  json(status: "ok", data: result)
 end
 
 
