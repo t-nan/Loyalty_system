@@ -1,6 +1,6 @@
-require './services/product_property.rb'
-require './services/calculate_positions'
-require './services/common_info'
+require './services/operation/product_property.rb'
+require './services/operation/calculate_positions'
+require './services/operation/common_info'
 
 class OperationRequest
 
@@ -18,14 +18,6 @@ class OperationRequest
       list << CalculatePositions.call(user, pos)
     end
 
-    #binding.pry
-
-    x = CommonInfo.call(user, positions)
-
-    binding.pry
+    CommonInfo.call(user, positions)
   end
-
-  # def calculate_products()
-  #
-  # end
 end

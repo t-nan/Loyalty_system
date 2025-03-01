@@ -7,12 +7,12 @@ class CalculatePositions
 
       {
         discount_type: discount_type,
-        total_sum: total_sum,
+        cost: total_sum,
+        base_sum: position&.dig(:base_sum),
         name: position&.dig(:name),
         total_discount_percent: total_discount_percent,
         total_discount: total_discount,
-        total_cashback: total_cashback,
-        total_cashback_percent: total_cashback_percent
+        total_cashback: total_cashback
       }
     end
 
